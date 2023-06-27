@@ -9,24 +9,26 @@
 </head>
 <body>
     <div class="container">
-    <header>
-        <nav class="nav nav-pills nav-justified">
-            <a class="nav-item nav-link active" href="#">Lista de Tarefas</a>
-            <a class="nav-item nav-link " href="#">Tarefas Concluidas</a>
-            <a class="nav-item nav-link " href="#">Cadastrar Usuário</a>
-        </nav>
-    </header>
-    
-        <ul id="taskList" class="list-group"> 
-            
-        </ul>
-        <input type="text" id="newTaskInput">
-        <button type="text" class="btn btn-secondary btn-lg" onclick="addTask()">Adicionar Tarefa</button>
-        <button type="text" class="btn btn-secondary btn-lg" onclick="removeTask()">Remover Tarefa</button>
-        <button type="text" class="btn btn-secondary btn-lg" onclick="concludeTask()">Concluir Tarefa</button>
-
-        </section>
+        <header>
+            <nav class="nav nav-pills nav-justified">
+                <a class="nav-item nav-link active" href="#">Lista de Tarefas</a>
+                <a class="nav-item nav-link " href="tarefasConcluidas.html">Tarefas Concluidas</a>
+                <a class="nav-item nav-link " href="#">Cadastrar Usuário</a>
+            </nav>
+        </header>
+        
+            <ul id="taskList" class="list-group"> 
+                
+            </ul>
     </div>
+            <div id="funcionalidades">
+                <input type="text" id="newTaskInput">
+                <button type="text" class="btn btn-secondary btn-lg" onclick="addTask()">Adicionar Tarefa</button>
+                <button type="text" class="btn btn-secondary btn-lg" onclick="removeTask()">Remover Tarefa</button>
+                <button type="text" class="btn btn-secondary btn-lg" onclick="concludeTask()">Concluir Tarefa</button>
+            </div>
+        </section>
+    
     <script src="js/bootstrap.min.js"></script>
     <script>
         function addTask() {
@@ -75,6 +77,23 @@
                 list.removeChild(listItem);
             });
         }
+
+        function concludeTask() {
+            var list = document.getElementById("taskList");
+            var checkboxes = list.querySelectorAll("input[type='checkbox']:checked");
+
+            checkboxes.forEach(function (checkbox) {
+                var listItem = checkbox.parentNode;
+                listItem.classList.add("task-completed");
+
+                // Armazena a tarefa concluída no localStorage
+                var taskName = listItem.querySelector("label").textContent;
+                localStorage.setItem(taskName, true);
+
+                list.removeChild(listItem);
+            }); 
+}
+
     </script>
     
     

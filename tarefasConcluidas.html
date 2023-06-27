@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarefas Concluídas</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav class="nav nav-pills nav-justified">
+        <a class="nav-item nav-link" href="index.html">Lista de Tarefas</a>
+        <a class="nav-item nav-link active" href="#">Tarefas Concluídas</a>
+        <a class="nav-item nav-link" href="#">Cadastrar Usuário</a>
+      </nav>
+    </header>
+
+    <ul id="completedTaskList" class="list-group"></ul>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      // Marca uma tarefa como concluída
+      function markTaskAsCompleted(taskName) {
+        localStorage.setItem(taskName, "true");
+      }
+
+      // Remove uma tarefa concluída
+      function removeCompletedTask(taskName) {
+        localStorage.removeItem(taskName);
+      }
+
+      // Recupera as tarefas concluídas do localStorage e exibe na página
+      document.addEventListener("DOMContentLoaded", function () {
+        var completedList = document.getElementById("completedTaskList");
+
+        for (var i = 0; i < localStorage.length; i++) {
+          var taskName = localStorage.key(i);
+          var taskCompleted = localStorage.getItem(taskName);
+
+          if (taskCompleted === "true") {
+            var listItem = document.createElement("li");
+            listItem.className = "list-group-item task-completed";
+            listItem.textContent = taskName;
+
+            var deleteButton = document.createElement("button");
+            deleteButton.textContent = "Excluir";
+            deleteButton.className = "btn btn-danger btn-sm";
+
+            // Adiciona evento de clique ao botão de exclusão
+            deleteButton.addEventListener("click", function (event) {
+              var taskName = event.target.parentNode.textContent;
+              removeCompletedTask(taskName);
+              completedList.removeChild(event.target.parentNode);
+            });
+
+            listItem.appendChild(deleteButton);
+            completedList.appendChild(listItem);
+          }
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>

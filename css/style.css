@@ -10,3 +10,14 @@ body{
 .nav-link:hover{
     color: blue !important;
 }
+
+#funcionalidades{
+        
+        
+       
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+}
