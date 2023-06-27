@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+    <header>
+        <nav class="nav nav-pills nav-justified">
+            <a class="nav-item nav-link active" href="#">Lista de Tarefas</a>
+            <a class="nav-item nav-link " href="#">Tarefas Concluidas</a>
+            <a class="nav-item nav-link " href="#">Cadastrar Usuário</a>
+        </nav>
+    </header>
+    
+        <ul id="taskList" class="list-group"> 
+            
+        </ul>
+        <input type="text" id="newTaskInput">
+        <button type="text" class="btn btn-secondary btn-lg" onclick="addTask()">Adicionar Tarefa</button>
+        <button type="text" class="btn btn-secondary btn-lg" onclick="removeTask()">Remover Tarefa</button>
+        <button type="text" class="btn btn-secondary btn-lg" onclick="concludeTask()">Concluir Tarefa</button>
+
+        </section>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        function addTask() {
+            var input = document.getElementById("newTaskInput");
+            var taskName = input.value;
+    
+            if (taskName !== "") {
+                var list = document.getElementById("taskList");
+    
+                var listItem = document.createElement("li");
+                listItem.className = "list-group-item";
+    
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.className = "form-check-input me-1";
+                checkbox.id = "checkbox" + (list.children.length + 1); // Gera ID único para o checkbox
+    
+                var label = document.createElement("label");
+                label.className = "form-check-label stretched-link";
+                label.textContent = taskName;
+    
+                listItem.appendChild(checkbox);
+                listItem.appendChild(label);
+                list.appendChild(listItem);
+    
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        console.log("Tarefa selecionada: " + this.id);
+                        listItem.classList.add("task-completed");
+                        
+                    } else {
+                        console.log("Tarefa deselecionada: " + this.id);
+                        listItem.classList.remove("task-completed");
+                    }
+                });
+    
+                input.value = ""; // Limpa o campo de entrada após adicionar a tarefa
+            }
+        }
+        function removeTask() {
+            var list = document.getElementById("taskList");
+            var checkboxes = list.querySelectorAll("input[type='checkbox']:checked"); //corresponde a lista de elementos marcados, ele busca pego seletor do css
+            
+            checkboxes.forEach(function(checkbox) { //Em seguida, é feito um loop forEach para percorrer todos os checkboxes marcados. Para cada checkbox, seu elemento pai (o item da lista) é obtido usando checkbox.parentNode e, em seguida, o item da lista é removido usando list.removeChild(listItem).
+                var listItem = checkbox.parentNode;
+                list.removeChild(listItem);
+            });
+        }
+    </script>
+    
+    
+</body>
+</html>

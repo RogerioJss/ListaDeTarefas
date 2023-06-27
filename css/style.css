@@ -1,0 +1,12 @@
+body{
+    background-color: rgb(138, 195, 195) !important;
+}
+.task-completed{
+    background-color: green !important;
+}
+.nav-link{
+    color: white !important;
+}
+.nav-link:hover{
+    color: blue !important;
+}
