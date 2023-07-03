@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body id="bodyLogin">
+  <div id="login">
+    <label for="user"><strong>Usuário</strong></label>
+    <input type="text" id="user" placeholder="Digite seu usuário"><br>
+    <label for="password"><strong>Senha</strong></label>
+    <input type="password" placeholder="Digite sua senha" id="password">
+    <a href="form.html" id="cadastrar">Não tem conta?Cadastre-se aqui!</a>
+    <br>
+    <input type="button" value="Login" id="buttonLogin" onclick="logar()">
+    <div id="res1"></div>
+  </div>
+        <script>
+          function logar(){
+            var user = document.getElementById("user");
+            var senha = document.getElementById("password");
+            if(user.value != "" && senha.value != ""){
+              window.open("index.html");
+            }else{
+              var res = document.getElementById("res1");
+              res.innerHTML = `Preencha o usuario e senha corretamente!!`; 
+            }
+          }
+        </script>
+        <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

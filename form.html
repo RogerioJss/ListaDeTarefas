@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Usuário</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/8c12e66e80.js" crossorigin="anonymous"></script>
+</head>
+<body id="bodyForm">
+    <div id="formCadastrar">
+        <label for="nomecompleto"><strong>Nome Completo</strong></label>
+        <input type="text" placeholder="Digite seu nome completo" id="nomeCompleto">
+        <label for="nameuser"><strong>Nome de Usuário</strong></label>
+        <input type="text" placeholder="Digite seu nome de Usuário" id="nameUser">
+        <label for="telefone"><strong>Telefone</strong></label>
+        <input type="text" placeholder="(XX)X XXXX-XXXX" id="telefone">
+        <label for="dataNascimento"><strong>Data de Nascimento</strong></label>
+        <input type="date"  id="dataNascimento">
+        <label for="emailUser"><strong>Email</strong></label>
+        <input type="email" id="email" placeholder="example@gmail.com">
+        <label for="password"><strong>Senha</strong></label>
+        <input type="password" placeholder="Digite sua senha" id="senha">
+        <input type="password" placeholder="Confirme sua senha" id="senhaConfirm">
+        <input type="button" value="Cadastrar" id="confirmButton" onclick="cadastrar()">
+        <input type="button" value="Cancelar" id="cancelButton" onclick="cancelar()">
+    </div>
+    <div id="res"></div>
+
+    <script>
+        function cadastrar(){
+            var nomeCompleto = document.getElementById("nomeCompleto");
+            var nameUser = document.getElementById("nameUser");
+            var telefone = document.getElementById("telefone");
+            var dataNascimento = document.getElementById("dataNascimento");
+            var email = document.getElementById("email");
+            var senha = document.getElementById("senha");
+            var senhaConfirm = document.getElementById("senhaConfirm");
+            var res = document.getElementById("res");
+             
+            if(nomeCompleto.value != "" && nameUser.value != "" && telefone.value != "" && dataNascimento.value != "" && email.value != "" && senha.value != "" && senhaConfirm.value != ""){
+            res.innerHTML = `Seu nome é <strong>${nomeCompleto.value}</strong>, Seu usuario é <strong>${nameUser.value}</strong>,Seu telefone  é  <strong>${telefone.value}</strong>,Sua data de nascimento é <strong>${dataNascimento.value}</strong>,Seu email é <strong>${email.value}</strong>,Sua senha é <strong>${senha.value}</strong>.`
+            }else{
+                res.innerHTML = `Lamento!!Você esqueceu de preencher um campo, favor revisar novamente!`;
+            }
+        }
+        function cancelar(){
+            nomeCompleto.value = "";
+            nameUser.value = "";
+            telefone.value = "";
+            dataNascimento.value = "";
+            email.value = "";
+            senha.value = "";
+            senhaConfirm.value = "";
+            res.innerHTML = ``;
+        }
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
