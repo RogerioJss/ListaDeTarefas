@@ -44,7 +44,7 @@
                 var checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
                 checkbox.className = "form-check-input me-1";
-                checkbox.id = "checkbox" + (list.children.length + 1); // Gera ID único para o checkbox
+                checkbox.id = "checkbox" + (list.children.length + 1); 
     
                 var label = document.createElement("label");
                 label.className = "form-check-label stretched-link";
@@ -65,14 +65,14 @@
                     }
                 });
     
-                input.value = ""; // Limpa o campo de entrada após adicionar a tarefa
+                input.value = ""; 
             }
         }
         function removeTask() {
             var list = document.getElementById("taskList");
-            var checkboxes = list.querySelectorAll("input[type='checkbox']:checked"); //corresponde a lista de elementos marcados, ele busca pego seletor do css
+            var checkboxes = list.querySelectorAll("input[type='checkbox']:checked"); 
             
-            checkboxes.forEach(function(checkbox) { //Em seguida, é feito um loop forEach para percorrer todos os checkboxes marcados. Para cada checkbox, seu elemento pai (o item da lista) é obtido usando checkbox.parentNode e, em seguida, o item da lista é removido usando list.removeChild(listItem).
+            checkboxes.forEach(function(checkbox) { 
                 var listItem = checkbox.parentNode;
                 list.removeChild(listItem);
             });
@@ -86,7 +86,7 @@
                 var listItem = checkbox.parentNode;
                 listItem.classList.add("task-completed");
 
-                // Armazena a tarefa concluída no localStorage
+                
                 var taskName = listItem.querySelector("label").textContent;
                 localStorage.setItem(taskName, true);
 

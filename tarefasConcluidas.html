@@ -21,12 +21,12 @@
 
     <script src="js/bootstrap.min.js"></script>
     <script>
-      // Remove uma tarefa concluída
+      
       function removeCompletedTask(taskId) {
         localStorage.removeItem(taskId);
       }
 
-      // Recupera as tarefas concluídas do localStorage e exibe na página
+     
       document.addEventListener("DOMContentLoaded", function () {
         var completedList = document.getElementById("completedTaskList");
 
@@ -35,18 +35,18 @@
           var taskCompleted = localStorage.getItem(taskId);
 
           if (taskCompleted === "true") {
-            var taskText = taskId; // Usando o ID como texto da tarefa concluída
+            var taskText = taskId; 
 
             var listItem = document.createElement("li");
             listItem.className = "list-group-item task-completed";
-            listItem.textContent = taskText; // Atribuindo o texto correto da tarefa concluída
+            listItem.textContent = taskText; 
             listItem.id = taskId;
 
             var deleteButton = document.createElement("button");
             deleteButton.textContent = "Excluir";
             deleteButton.className = "btn btn-danger btn-sm";
 
-            // Adiciona evento de clique ao botão de exclusão
+            
             deleteButton.addEventListener("click", function (event) {
               var taskId = event.target.parentNode.id;
               removeCompletedTask(taskId);
